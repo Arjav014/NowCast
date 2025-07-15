@@ -3,7 +3,7 @@ import type {
   Coordinates,
   WeatherData,
   ForecastData,
-  GecodingResponse,
+  GeocodingResponse,
 } from "./types";
 
 class WeatherAPI {
@@ -46,14 +46,14 @@ class WeatherAPI {
     return this.fetchData<ForecastData>(url);
   }
 
-  async reverseGeocode({ lat, lon }: Coordinates): Promise<GecodingResponse[]> {
+  async reverseGeocode({ lat, lon }: Coordinates): Promise<GeocodingResponse[]> {
     const url = this.createURL(`${API_CONFIG.GEO}/reverse`, {
       lat: lat.toString(),
       lon: lon.toString(),
       limit: 1,
     });
 
-    return this.fetchData<GecodingResponse[]>(url);
+    return this.fetchData<GeocodingResponse[]>(url);
   }
 }
 
