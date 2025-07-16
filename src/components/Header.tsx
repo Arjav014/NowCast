@@ -1,6 +1,7 @@
 import { useTheme } from "@/context/theme-provider";
 import { Moon, Sun } from "lucide-react";
 import { Link } from "react-router-dom";
+import CitySearch from "./CitySearch";
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
@@ -15,7 +16,9 @@ const Header = () => {
             NowCast
           </span>
         </Link>
-        <div>
+        <div className="flex items-center gap-4">
+          {/* Search */}
+          <CitySearch />
           {/* theme toggle */}
           <div
             onClick={() => setTheme(isDark ? "light" : "dark")}
