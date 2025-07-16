@@ -1,6 +1,6 @@
 import type { GeocodingResponse, WeatherData } from "@/api/types";
 import { Card, CardContent } from "./ui/card";
-import { ArrowDown, ArrowUp, CircleGauge, Droplets, Wind } from "lucide-react";
+import { ArrowDown, ArrowUp, Droplets, Wind } from "lucide-react";
 
 interface CurrentWeatherProps {
   data: WeatherData;
@@ -10,7 +10,7 @@ interface CurrentWeatherProps {
 const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
   const {
     weather: [currentWeather],
-    main: { temp, feels_like, temp_min, temp_max, humidity, pressure },
+    main: { temp, feels_like, temp_min, temp_max, humidity },
     wind: { speed },
   } = data;
 
@@ -18,7 +18,7 @@ const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
   return (
     <Card className="overflow-hidden">
       <CardContent className="p-6">
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid md:grid-cols-2">
           {/* Temperature and details */}
           <div className="space-y-4">
             {/* Your location */}
@@ -59,21 +59,13 @@ const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
               </div>
             </div>
             {/* Details */}
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 gap-4">
               {/* Humidity */}
               <div className="flex items-center gap-2">
                 <Droplets className="size-4 text-blue-500" />
                 <div className="space-y-0.5">
                   <p className="text-sm font-medium">Humidity</p>
                   <p className="text-sm text-muted-foreground">{humidity}%</p>
-                </div>
-              </div>
-              {/* Pressure */}
-              <div className="flex items-center gap-2">
-                <CircleGauge className="size-4 text-blue-500" />
-                <div className="space-y-0.5">
-                  <p className="text-sm font-medium">Pressure</p>
-                  <p className="text-sm text-muted-foreground">{pressure} hPa</p>
                 </div>
               </div>
               {/* Wind */}
